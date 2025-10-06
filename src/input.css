@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Đảm bảo thanh header có chiều cao cố định */
+nav#header {
+  height: 70px; /* Chiều cao cố định của header */
+  position: fixed; /* Đảm bảo thanh header cố định khi cuộn trang */
+  top: 0; /* Đặt ở trên cùng */
+  left: 0;
+  right: 0;
+
+  z-index: 1000; /* Đảm bảo header nằm trên cùng */
+}
+
+/* Thêm khoảng cách trên cho phần nội dung chính */
+main {
+  margin-top: 10px; /* Khoảng cách bằng chiều cao của header */
+}
+
+.container {
+margin: 0 auto;
+}
+
+.carousel {
+}
+
+/* Mua ngay */
+.detail_product .content {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.detail_product .img {
+  width: 45%; /* Set width to 45% for smaller images */
+}
+
+.detail_product .main-img img {
+  width: 100%; /* Main image full width of its container */
+  height: auto;
+  border-radius: 10px;
+}
+
+.detail_product .grid img {
+  width: 100%; /* Make the smaller images take full width of their container */
+  height: auto;
+  border-radius: 10px;
+}
+
+.detail_product .content_title {
+  width: 45%; /* Set width for content title to 45% */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detail_product .img_choice {
+  display: flex;
+  gap: 10px; /* Add gap between choice images */
+}
+
+.detail_product .img_1_choice {
+  width: 50px;
+  height: 50px;
+  background-color: #e5e5e5; /* Placeholder background for image choices */
+  border-radius: 5px;
+}
+
+.detail_product .size {
+  margin-top: 20px; /* Add spacing for size section */
+}
+
+.detail_product .size label {
+}
+
+@media screen and (max-width: 768px) {
+  .detail_product .content {
+    align-items: center;
+  }
+  .detail_product .size label {
+    width: 90px;
+  }
+  .detail_product .btn_list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 9999px) {
+  .detail_product .size label {
+    width: 120px;
+  }
+}
+
+/* list */
+.list .image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.list .image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease; /* Hiệu ứng chuyển đổi cho sự mờ dần */
+}
+
+.list .image-container img:hover {
+  opacity: 0; /* Ảnh đầu tiên mờ đi khi di chuột */
+}
+
+.list .image-container img.hover-img {
+  display: block; /* Hiện ảnh thứ hai */
+}
+
+.list .image-container:hover img.hover-img {
+  display: block; /* Hiện ảnh thứ hai khi di chuột */
+}
+
+.list .image-container:hover img:not(.hover-img) {
+  display: none; /* Ẩn ảnh đầu tiên khi di chuột */
+}
