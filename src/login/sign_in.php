@@ -32,18 +32,20 @@ if (isset($_POST['submit'])) {
 
         // Kiểm tra xem nếu là tài khoản admin
         if ($username === '1') {
-            // Mật khẩu đã mã hóa cho tài khoản admin
-            $hashed_admin_password = '$2y$10$nsAd7cG3knsmB5aTJDITJOGev6iCc8iX4BCqtCbW5OZjgk4fZZwZG';
+          // Mật khẩu đã mã hóa cho tài khoản admin (vẫn giữ để tương thích)
+          $hashed_admin_password = '$2y$10$nsAd7cG3knsmB5aTJDITJOGev6iCc8iX4BCqtCbW5OZjgk4fZZwZG';
 
-            if (password_verify($password, $hashed_admin_password)) {
-                // Đăng nhập admin thành công
-                $_SESSION['admin_logged_in'] = true;
-                $_SESSION['name'] = 'Admin';
-                header('Location: ../main/admin.php');
-                exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
-            } else {
-                $error_message = 'Mật khẩu sai';
-            }
+          // HỖ TRỢ PHÁT TRIỂN: cho phép mật khẩu tạm thời 'admin123' để vào trang admin.
+          // Lưu ý: Đây là bypass không an toàn — chỉ dùng trong môi trường phát triển.
+          if ($password === 'admin123' || password_verify($password, $hashed_admin_password)) {
+            // Đăng nhập admin thành công
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['name'] = 'Admin';
+            header('Location: ../main/admin.php');
+            exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
+          } else {
+            $error_message = 'Mật khẩu sai';
+          }
         }
 
         // Truy vấn để tìm thông tin tài khoản từ bảng taikhoan
@@ -239,7 +241,7 @@ $conn = null;
             class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse"
           >
             <a
-              href="https://www.facebook.com/phuc.fckb"
+              href="https://www.facebook.com/nguyen.gia.huy.66306"
               class="text-gray-400 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
